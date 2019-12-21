@@ -1,4 +1,9 @@
-#//{}
+# =============================================================================
+#
+# THIS FILE WAS GENERATED USING JINJA TEMPLATING ANY EDITS TO THIS FILE WILL BE 
+# OVERWRITTEN ON THE NEXT RENDER / BUILD.
+#
+# -----------------------------------------------------------------------------
 FROM ruby:2.6
 
 ARG dev_password
