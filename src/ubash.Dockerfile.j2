@@ -1,0 +1,15 @@
+{% include "includes/jinja/header-comment.txt" %}
+FROM ubuntu:18.04
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    git \
+    unzip \
+    vim
+
+{% include "includes/jinja/dev-account-setup.txt" %}
+
+{# ENTRYPOINT [ "bash" ] #}

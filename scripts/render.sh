@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 scriptDir=$(dirname ${BASH_SOURCE[0]})
 
+if [[ "$(which python)" == "/usr/local/bin/python" ]]; then
+    source .venv/bin/activate
+fi
+
 function render {
     python "${scriptDir}/render.py" -t "${1}"
 }

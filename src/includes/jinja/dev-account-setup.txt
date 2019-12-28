@@ -1,0 +1,20 @@
+# =============================================================================
+#   Setup a non-root, sudoer account for development
+#
+ARG dev_password
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y sudo && \
+    useradd -mU \
+            -p ${dev_password} \
+            -s /bin/bash \
+            -G sudo \
+            dev && \
+    chown -R dev /home/dev && \
+    chgrp -R dev /home/dev 
+
+USER dev
+WORKDIR /home/dev
+# -----------------------------------------------------------------------------
