@@ -32,10 +32,11 @@ def main(args: argparse.Namespace):
 
     rendered_template = t.render(values)
 
-    if not os.path.isdir('./gen'):
-        os.mkdir('./gen')
-        
-
+    destination_dir_path =f'gen/{args.template_file.replace("Dockerfile.j2","")}'
+    try:
+        os.makedirs(destination_dir_path)
+    except:
+        pass
 
     output = open(f'gen/{args.template_file.replace(".j2","")}', "w")
     output.write(rendered_template)

@@ -1,0 +1,23 @@
+{% include "includes/jinja/header-comment.txt" %}
+FROM ubuntu:18.04
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    git \
+    unzip \
+    vim
+
+RUN bash -c 'curl -L https://raw.githubusercontent.com/odb/shml/1.1.0/shml.sh -o /usr/local/bin/shml' && \
+    chmod +x /usr/local/bin/shml
+
+{% include "includes/jinja/dev-account-setup.txt" %}
+
+ARG github_username
+ARG github_password
+
+RUN cd ~ && \
+    git clone https://${github_username}:${github_password}@github.com/wileymab/dyson.git .dyson && \
+    echo "source ~/.dyson/environments/bashrc.sh" >> ~/.bashrc

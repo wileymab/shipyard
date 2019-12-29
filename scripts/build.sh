@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 function build {
-    docker build --build-arg dev_password=${3} -t "${2}" -f "${1}"  .
+    ./src/${1}/build.sh "${2}"
 }
 
-docker_file="${1}.Dockerfile"
-tag="${1}"
-if [[ -f "gen/${docker_file}" ]]; then
-    build "gen/$docker_file" $tag "${2}"
+docker_file="gen/${1}/Dockerfile"
+if [[ -f "${docker_file}" ]]; then
+    build "${1}" "${docker_file}"
 else
     echo "Unable to locate ${docker_file}"
 fi

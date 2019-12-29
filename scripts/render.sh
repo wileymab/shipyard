@@ -18,7 +18,7 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-template_file="${1}.Dockerfile.j2"
+template_file="${1}/Dockerfile.j2"
 if [[ -f "src/${template_file}" ]]; then
     render $template_file
 else

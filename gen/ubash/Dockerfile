@@ -15,6 +15,9 @@ RUN apt-get update && \
     unzip \
     vim
 
+RUN bash -c 'curl -L https://raw.githubusercontent.com/odb/shml/1.1.0/shml.sh -o /usr/local/bin/shml' && \
+    chmod +x /usr/local/bin/shml
+
 # =============================================================================
 #   Setup a non-root, sudoer account for development
 #
@@ -36,3 +39,9 @@ USER dev
 WORKDIR /home/dev
 # -----------------------------------------------------------------------------
 
+ARG github_username
+ARG github_password
+
+RUN cd ~ && \
+    git clone https://${github_username}:${github_password}@github.com/wileymab/dyson.git .dyson && \
+    echo "source ~/.dyson/environments/bashrc.sh" >> ~/.bashrc
