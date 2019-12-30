@@ -44,5 +44,5 @@ ARG github_username
 ARG github_password
 
 RUN cd ~ && \
-    git clone https://${github_username}:${github_password}@github.com/wileymab/dyson.git .dyson && \
+    git clone https://github.com/wileymab/dyson .dyson && \
     echo "source ~/.dyson/environments/bashrc.sh" > ~/.bashrc
