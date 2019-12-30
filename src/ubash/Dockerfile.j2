@@ -8,9 +8,10 @@ RUN apt-get update && \
     curl \
     git \
     unzip \
-    vim
+    vim \
+    tree
 
-RUN bash -c 'curl -L https://raw.githubusercontent.com/odb/shml/1.1.0/shml.sh -o /usr/local/bin/shml' && \
+RUN bash -c 'curl -fsSL https://raw.githubusercontent.com/odb/shml/1.1.0/shml.sh -o /usr/local/bin/shml' && \
     chmod +x /usr/local/bin/shml
 
 {% include "includes/jinja/dev-account-setup.txt" %}
@@ -20,4 +21,4 @@ ARG github_password
 
 RUN cd ~ && \
     git clone https://${github_username}:${github_password}@github.com/wileymab/dyson.git .dyson && \
-    echo "source ~/.dyson/environments/bashrc.sh" >> ~/.bashrc
+    echo "source ~/.dyson/environments/bashrc.sh" > ~/.bashrc
