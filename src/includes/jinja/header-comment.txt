@@ -1,6 +1,0 @@
-# =============================================================================
-#
-# THIS FILE WAS GENERATED USING JINJA TEMPLATING ANY EDITS TO THIS FILE WILL BE 
-# OVERWRITTEN ON THE NEXT RENDER / BUILD.
-#
-# -----------------------------------------------------------------------------
